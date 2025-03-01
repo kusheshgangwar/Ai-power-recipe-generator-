@@ -1,64 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tracy Karanja | Recipe Generator</title>
+    <title>Recipe Generator</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
     <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
     <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="src/styles.css" />
-  </head>
-  <body>
+    <link rel="stylesheet" href="C:\Users\OMESH BABU GANGWAR\3D Objects\ai recipe generator.css" />
+</head>
+
+<body>
     <div class="container">
-      <header>
-        <h1>AI Recipe Generator</h1>
-      </header>
-      <main>
-        <div class="form-container">
-          <form id="recipe-generator-form">
-            <input
-              type="text"
-              placeholder="What would you like a recipe for?"
-              autofocus
-              required
-              autocomplete="off"
-              class="instructions"
-              id="user-instructions"
-            />
-            <input type="submit" class="submit-button" />
-          </form>
-          <div class="hint">i.e Cake, cookies, pancakes</div>
-        </div>
-        <div class="recipe hidden" id="recipe"></div>
-      </main>
-      <footer>
-        This project was coded by
-        <a href="https://github.com/TracyK10" target="_blank" rel="noopener"
-          >Tracy Karanja</a
-        >
-        and is open-sourced on
-        <a
-          href="https://github.com/TracyK10/recipe-generator"
-          target="_blank"
-          rel="noopener"
-          >Github</a
-        >
-        and is hosted on
-        <a
-          href="https://tracy-karanja-recipe-generator.netlify.app/"
-          target="_blank"
-          rel="noopener"
-          >Netlify</a
-        >
-      </footer>
+        <header>
+            <h1>AI Recipe Generator</h1>
+        </header>
+        <main>
+            <div class="form-container">
+                <form id="recipe-generator-form">
+                    <input type="text" placeholder="What would you like a recipe for?" autofocus required autocomplete="off" class="instructions" id="user-instructions" />
+                    <input type="submit" class="submit-button" />
+                </form>
+                <button id="voice-button" class="voice-button" style="background-color: #f0f0f0; border-radius: 50%; padding: 10px; border: none; cursor: pointer;"><i class="fas fa-microphone"></i></button>
+                <div class="hint">i.e Cake, cookies, pancakes, etc.</div>
+            </div>
+            <div class="recipe hidden" id="recipe"></div>
+        </main>
     </div>
-    <script src="src/script.js"></script>
-  </body>
+    <script>
+        const voiceButton = document.getElementById('voice-button');
+        const userInstructions = document.getElementById('user-instructions');
+
+        // Add Material Icons link in the head section
+        const link = document.createElement('link');
+        link.href = "https://fonts.googleapis.com/icon?family=Material+Icons";
+        link.rel = "stylesheet";
+        document.head.appendChild(link);
+
+        // Update voice button icon
+        voiceButton.innerHTML = '<span class="material-icons">mic</span>';
+
+        voiceButton.addEventListener('click', () => {
+            const recognition = new(window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.lang = 'en-US', 'hi-hi';
+            recognition.start();
+
+            recognition.onresult = (event) => {
+                const transcript = event.results[0][0].transcript;
+                userInstructions.value = transcript;
+            };
+        });
+    </script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="C:\Users\OMESH BABU GANGWAR\3D Objects\ai recipe generator.js"></script>
+</body>
+
 </html>
