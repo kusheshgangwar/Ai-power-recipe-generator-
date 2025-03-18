@@ -1,4 +1,5 @@
-**AI POWER RECIPE GENERATOR
+AI POWER RECIPE GENERATOR
+--------------------------
 
 
 An AI-powered recipe generator using HTML, CSS, and JavaScript can take user input (such as available ingredients or dietary preferences) and suggest recipes using AI. Here's how you can build it:
